@@ -1,0 +1,27 @@
+1. samostatný úkol
+Vypracujte protokol o vývoji Ransomwaru od roku 2000 do současnosti. Pro analýzu si vyberte 10 Ransomwarů z období 2002-2022. Výběr je na Vás.
+
+Práce bude obsahovat:
+
+10 Vámi vybraných Ransomwarů, které byly klasifikovány v letech 2002-2022.
+
+U každého Ransomwaru uveďte: 
+název Ransomwaru
+Jak dlouhou dobu byl aktivní
+na jaké OS byl útok cílen
+předpokládaný počet napadených zařízení
+použitá metoda šifrování
+identifikační znaky daného ransomwaru
+způsob šíření ransomwaru
+Min. u 3 ransomwaru bude i předpokládaný finanční dopad v celosvětovém měřítku(s uvedeným zdrojem).  
+
+Podmínky vypracování:
+
+použijte šablonu BP/DB na UTB
+min. počet stran textu v práci: 10 A4 (v případě, že budete vkládat obrázky, musí práce obsahovat cca. 10 stran textu)
+min. počet použitých zdrojů: 5
+citování a práce se zdroji je stejná jako u BP/DP
+maximální množství převzatého textu(ale řádně citovaného dle ISO 690): 30%
+Na závěr práce zpracujete Gantův diagram, který bude zobrazovat časové působení vybraných (10ti) ransomwaru.
+
+

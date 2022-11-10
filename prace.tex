@@ -1,0 +1,252 @@
+% ============================================================================ %
+%
+%           Šablona bakalářské/diplomové práce
+%
+% Autor:    Ing. Jozef Říha (4. květen 2006)
+%           (některé komentáře převzaty z dokumentu Ivana Pomykacze)
+%
+% Verze:    2017-01-19, Ing. Pavel Tomášek (tomasek@fai.utb.cz)
+%
+% Kódování: UTF-8 (žluťoučký kůň úpěl ďábelšké ódy)
+%
+% Sazba:    pdflatex prace.tex && pdflatex prace.tex
+%           (nutné dvakrát pro korektní vložení citací a jiných referencí),
+%           v případě umístění literatury do externího bib souboru je třeba volat
+%           pdflatex statement.tex && bibtex statement.tex && pdflatex statement.tex && pdflatex statement.tex
+%
+% Tip:      Ve správně vysázeném českém textu by na konci řádku neměla zůstant
+%           samotná jednopísmenná předložka. Na takové místo se vkládá
+%           nezalomitelná mezera pomocí symbolu ~. Existuje program, který umí
+%           zpracovat celý TeX dokument najednou podle českých konvencí:
+%           http://petr.olsak.net/ftp/olsak/vlna/
+%
+%           Pozor! Vzhledem k požadovanému standardu PDF/A nesmí obrázky obsahovat 
+%           alfa kanál (průhlednost).
+%
+% ============================================================================ %
+
+
+\documentclass[a4paper,12pt]{article}
+
+% Definice vzhledu a nastavení se načítá z následujícího souboru (netřeba editovat)
+\input{tex/UTB.tex}
+
+% Uživatelské definice -- upravte dle požadavků
+\nastavfakultu{FAI}
+	% FAI  -- pro Fakultu aplikované informatiky
+	% FAME -- pro Fakultu managementu a ekonomiky
+	% FHS  -- pro Fakultu humanitních studií
+	% FLKR -- pro Fakultu logistiky a krizového řízení
+	% FMK  -- pro Fakutlu mutimediálních komunikací
+	% FT   -- pro Fakultu technologickou
+	% UNI  -- pro Univerzitní institut
+\nastavtyp{SP}
+	% BP   -- bakalářská práce
+	% DP   -- diplomová práce
+	% SP	   -- semestrální práce
+\nastavrok{2022}
+	% zadejte rok místo "xxxx"
+\nastavjazyk{CZ}
+	% CZ   -- práce bude v českém jazyce
+	% EN   -- práce bude v anglickém jazyce
+
+% Lze přidat vertikalni odsazeni nad (prvni parametr) a pod (druhy parametr)
+% obrázky, tabulky i rovnice/soustavy rovnic
+\nastavmezerukolemobrazku{0mm}{0mm}
+\nastavmezerukolemtabulek{0mm}{0mm}
+\nastavmezerukolemrovnic{0mm}{0mm}
+
+\nastavautora{Bc. Petr Vykoukal}
+\nastavnazevcz{Vybraný ransomware za období 2002-2022}
+\nastavnazeven{Název práce anglicky (max. 2 řádky)} % Jen u anglicky psané práce
+\nastavabstraktcz{Semestrální práce se zabývá vývojem ransomwaru od roku 2002 do současnosti a dále se věnuje několika vybraným ransomwarům, které se v tomto období vyskytly.}
+\nastavabstrakten{The semester's thesis deals with the development of Ransomware from 2002 to the present day and also focuses on several selected Ransomware that occurred during this period.}
+\nastavklicovaslovacz{Malware, Ransomware}
+\nastavklicovaslovaen{Malware, Ransomware}
+
+% Následující příkaz nastaví standard PDF/A-1b
+\aplikujpdfa
+
+
+%\usepackage{graphicx}
+\usepackage{adjustbox}
+\graphicspath{{./graphics/}}
+
+\usepackage{booktabs}
+\usepackage{array}
+
+\usepackage{xurl}
+
+
+%\hyphenation{u-kon-čo-val} - přidá do slovníku slovo ukončoval s možnostmi, jak ho rozdělovat. Odtud už stačí jen kdykoliv použít slovo "ukončoval"
+%dalši varianta je použít slovo u\-kon\-čo\-val
+\hyphenation{u-kon-čo-val na-pa-dal na-pa-de-né sy-sté-mem o-prá-vně-ní ran-som-ware
+	to-má-še sou-bo-ry u-pra-vil od-stra-nit i-den-ti-fi-ko-vat bli-ka-jí-cím 
+	in-sta-lo-vat způ-so-be-né al-go-rit-mem nej-čas-tě-ji ne-za-pla-ti-la
+	ši-fro-va-cí pos-ky-tnu-té-ho při-chá-ze-ly žád-ná va-ri-an-ty web-ka-me-ra
+	zra-ni-tel-nos-ti za-ši-fro-vá-ní sou-bo-ru vy-ge-ne-ro-val}  
+
+% ============================================================================ %
+\begin{document}
+
+\voffset=\valueVOffset\evensidemargin=\valueSideMargin\oddsidemargin=\valueSideMargin\headsep=\valueHeadSep\headheight=\valueHeadHeight\setlength{\parskip}{3pt}\textheight=\valueTextHeight\textwidth=\valueTextWidth
+
+\titulnistrana
+\clearpage
+
+%\zadani
+%následující řádek je místo zadání (nascanováná strana blablabla...)
+\voffset=\valueVOffset\evensidemargin=\valueSideMargin\oddsidemargin=\valueSideMargin\headsep=\valueHeadSep\headheight=\valueHeadHeight\setlength{\parskip}{3pt}\textheight=\valueTextHeight\textwidth=\valueTextWidth
+
+%\prohlaseni
+
+\abstraktaklicovaslova
+
+
+% ============================================================================ %
+\clearpage
+\thispagestyle{empty}
+%Zde je místo pro případné poděkování, motto, úryvky knih, básní atp.
+
+
+% ============================================================================ %
+\obsah  % Obsah je generován automaticky
+
+
+% ============================================================================ %
+\OdsazovaniOdstavcuStart % Nastaví odsazování odstavců dle zvoleného jazyka
+
+% ============================================================================ %
+% Encoding: UTF-8 (žluťoučký kůň úpěl ďábelšké ódy)
+% ============================================================================ %
+
+% ============================================================================ %
+\nn{Úvod}
+V této práci se zabývám vývojem ransomwaru v~období 2002-2022, konkrétně tedy deseti vybranými. ransomware je konkrétní druh škodlivého software, který je specifický tím, že uživatele napadených počítačů nějakou formou vydírá za~účelem vymámení platby -- výkupného. \uv{Rukojmí} v~tomto procesu mohou být různá. Může se jednat o~zašifrovaná data, nebo výhružku, že~citlivá data uživatele budou zveřejněna na Internetu, nebo přímo kontaktům oběti. V~následující kapitole se~tedy postupně budu zabývat touto tématikou v~chronologickém pořadí, jak jednotlivé hrozby přicházely a nakonec v kapitole č. \ref{fig:gantt} uvedu Ganttův diagram, který bude zobrazovat časové působení jednotlivých ransomwarů.
+
+
+
+% ============================================================================ %
+%\cast{Teoretická část}
+
+\n{1}{Vybraný ransomware}
+V~této kapitole postupně uvedu jednotlivé ransomwary včetně jejich popisu. Seznam je chronologicky seřazen podle toho, jak jednotlivé hrozby přicházely.
+
+\n{2}{GPcode}
+Ransomware GPcode napadal operační systém Windows. Na scéně se objevil v červnu 2006 \cite{gpcode-knowbe4}. Šířil se pomocí emailových příloh. Konkrétně se jednalo o skodlivý dokument aplikace Word, který předstíral, že jde o žádost o zaměstnání. Při jeho spuštění upravil registr systému Windows tak, aby došlo ke spuštění GPcode při spuštění počítače. Následně začal vyhledávat na lokálních i vzdálených discích soubory určitého typu\footnote{Uváděny \cite{gpcode-fsecure} jsou soubory typu: \texttt{xls}, \texttt{doc}, \texttt{txt}, \texttt{rtf}, \texttt{zip}, \texttt{rar}, \texttt{dbf}, \texttt{htm}, \texttt{html}, \texttt{jpg}, \texttt{db}, \texttt{db1}, \texttt{db2}, \texttt{asc}, \texttt{pgp}.  V jiném zdroji \cite{gpcode-riskfront} je ale uvedeno, že se může jednat až o 80 různých druhů souborů.}.
+
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.6]{clocker1}
+		\caption{Náhled žádosti o výkupné CryptoLocker, převzato z \url{https://www.avast.com/c-cryptolocker}}
+		\label{fig:clocker1}
+	\end{center}
+\end{figure}
+
+
+\begin{table}[h]
+	\begin{center}
+		\caption{Nejvyšší způsobené škody způsobené ransomwarem \texttt{notPetya}}
+		\vspace{0.3cm}
+		\begin{tabular}{m{22em}m{8em}}
+			\toprule
+			Farmaceutická společnost Merck \cite{merck} & 40\,000 počítačů a 1\,400\,000\,000\,USD \\
+			\midrule
+			Francouzská stavební společnost Saint--Gobain \cite{sweek} & 387\,000\,000\,USD \\
+			\bottomrule
+		\end{tabular}
+		\label{notpetya-impacts}
+	\end{center}
+\end{table}
+
+
+
+\n{1}{Ganttův Diagram}
+
+%\begin{figure}[h!]
+%	\begin{center}
+%		\includegraphics[scale=0.17, angle=90]{gant}
+%		\caption{Ganttův diagram}
+%		\label{fig:gantt}
+%	\end{center}
+%\end{figure}
+
+
+\begin{figure}[h!]
+	\begin{adjustbox}
+    {addcode={
+        \begin{minipage}{\width}}{\caption{Ganttův diagram}
+        \label{fig:gantt}
+        \end{minipage}},rotate=90,center}
+%        %\includegraphics[trim=left bottom right top, clip]{file}
+      \includegraphics[scale=0.18]{gant}
+  \end{adjustbox}
+\end{figure}
+
+
+% ============================================================================ %
+% Pokud Vaše práce neobsahuje analytickou část, stačí odstranit či zakomentovat nasledujících pár rádků
+%\cast{Analytická část}
+%\n{1}{Nadpis}
+%\n{2}{Podnadpis}
+% ============================================================================ %
+%\cast{Projektová část}
+%\n{1}{Nadpis}
+%\n{2}{Podnadpis}
+% ============================================================================ %
+\nn{Závěr}
+Na základě uvedených příkladů je zřejmé, že ransomware prošel od svého počátku velkým rozvojem. Z velké části se šíří pomocí emailových zpráv, kdy je přiložen samotný ransomware, nebo program, případně skript, který jej stáhne a naintaluje do uživatelova počítače. Úživatelé tak mohli zabránit infekci svého počítače pouze větší obezřejností. Na rozdíl od útoků, které zneužily tzv. zero-day zranitelnosti.
+
+Dále po útoku ransomwaru \texttt{Reveton}, o kterém jsem psal v kapitole č.~\ref{reveton}, je znatelná změna ve vývoji ransomwaru, který používali sami vývojáři do modelu, kdy je ransomware poskytován za úplatu jako služba -- RaaS.
+
+
+% ============================================================================ %
+
+
+\OdsazovaniOdstavcuStop
+
+
+% ============================================================================ %
+\seznamlit{
+  % Na toto místo vložit veškeré citované bibliografické položky.
+  % http://generator-citaci.cz/
+	\bibitem{flashpoint-history}
+	{
+		The History and Evolution of Ransomware Attacks | Flashpoint.
+		\it{Flashpoint | Cyber Threat Intelligence Platform \& Professional Services} [online].
+		Copyright © 2022 Flashpoint. All rights reserved. [cit. 2022-10-13].
+		Dostupný z~WWW: \url{https://flashpoint.io/blog/the-history-and-evolution-of-ransomware-attacks/}
+	}  
+	
+}
+
+% Pro generování literatury lze alternativně použít i příkaz "\seznamlitbib", 
+% který se postará o plnohodnotné vkládání referencí pomocí "bibliography". 
+% V takovém případě se využívají bibliografické údaje uložené v souboru 
+% tex-literatura.bib. Ty se automaticky upravuji dle zvolené citační normy 
+% (v šabloně je nastavena korektní česká norma).
+%\seznamlitbib
+
+
+% ============================================================================ %
+\input{tex/zkratky.tex} % Seznam zkratek
+
+
+% ============================================================================ %
+\seznamobr  % Seznam je generován automaticky
+
+
+% ============================================================================ %
+\seznamtab  % Seznam je generován automaticky
+
+
+% ============================================================================ %
+%\input{tex/prilohy.tex} % Prilohy
+
+
+% ============================================================================ %
+
+\end{document}
+
+% ============================================================================ %

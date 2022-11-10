@@ -1,0 +1,30 @@
+**************************************************************************
+https://flashpoint.io/blog/the-history-and-evolution-of-ransomware-attacks/
+
+
+
+2019-2020
+V listopadu 2019 skupina ransomwaru "Maze" (není to samotný ransomwaare) uvilnila 700MB dokumentů ukradených společnosti Allied Universal ve snaze přimět je a budoicí oběti aby zaplpatili výkupné. To spustio trend ransomwarových zakládajících stránky s úniky, aby vyvíjely tlak na své oběti, kterým by případný únik způsobil další finanční ztráty odhalením citlivých finančních dat, osobních údajů jejich záklazníků, nebo obchodní tajemsví.
+Tato páka je účinná, pokud má oběť zálohy svých zašifrovaných dat a neměla by tak důvod zaplatit výkupné.
+
+**************************************************************************
+
+
+https://en.wikipedia.org/wiki/Ransomware#Notable_software_packages
+
+
+Fusob
+Bad Rabbit
+DarkSide
+Syskey
+
+
+https://en.wikipedia.org/wiki/List_of_cyberattacks#Ransomware_attacks
+
+
+
+top 5 útoků
+https://swisscyberinstitute.com/blog/5-biggest-ransomware-attacks-in-history/
+
+
+
