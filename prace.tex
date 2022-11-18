@@ -57,12 +57,12 @@
 \nastavmezerukolemrovnic{0mm}{0mm}
 
 \nastavautora{Bc. Petr Vykoukal}
-\nastavnazevcz{Vybraný ransomware za období 2002-2022}
+\nastavnazevcz{Vývoj počítačových červů 2005-2022}
 \nastavnazeven{Název práce anglicky (max. 2 řádky)} % Jen u anglicky psané práce
-\nastavabstraktcz{Semestrální práce se zabývá vývojem ransomwaru od roku 2002 do současnosti a dále se věnuje několika vybraným ransomwarům, které se v tomto období vyskytly.}
-\nastavabstrakten{The semester's thesis deals with the development of Ransomware from 2002 to the present day and also focuses on several selected Ransomware that occurred during this period.}
-\nastavklicovaslovacz{Malware, Ransomware}
-\nastavklicovaslovaen{Malware, Ransomware}
+\nastavabstraktcz{Semestrální práce se zabývá vývojem počítačových od roku 2005 do současnosti a dále se věnuje několika vybraným červům, které se v tomto období vyskytli.}
+\nastavabstrakten{The semester's thesis deals with the development of Computer Worms from 2005 to the present day and also focuses on several selected Worms that occurred during this period.}
+\nastavklicovaslovacz{Malware, Worm}
+\nastavklicovaslovaen{Malware, Worm}
 
 % Následující příkaz nastaví standard PDF/A-1b
 \aplikujpdfa
@@ -84,7 +84,7 @@
 	to-má-še sou-bo-ry u-pra-vil od-stra-nit i-den-ti-fi-ko-vat bli-ka-jí-cím 
 	in-sta-lo-vat způ-so-be-né al-go-rit-mem nej-čas-tě-ji ne-za-pla-ti-la
 	ši-fro-va-cí pos-ky-tnu-té-ho při-chá-ze-ly žád-ná va-ri-an-ty web-ka-me-ra
-	zra-ni-tel-nos-ti za-ši-fro-vá-ní sou-bo-ru vy-ge-ne-ro-val}  
+	zra-ni-tel-nos-ti za-ši-fro-vá-ní sou-bo-ru vy-ge-ne-ro-val za-hr-nu-jí-cí}  
 
 % ============================================================================ %
 \begin{document}
@@ -122,67 +122,111 @@
 
 % ============================================================================ %
 \nn{Úvod}
-V této práci se zabývám vývojem ransomwaru v~období 2002-2022, konkrétně tedy deseti vybranými. ransomware je konkrétní druh škodlivého software, který je specifický tím, že uživatele napadených počítačů nějakou formou vydírá za~účelem vymámení platby -- výkupného. \uv{Rukojmí} v~tomto procesu mohou být různá. Může se jednat o~zašifrovaná data, nebo výhružku, že~citlivá data uživatele budou zveřejněna na Internetu, nebo přímo kontaktům oběti. V~následující kapitole se~tedy postupně budu zabývat touto tématikou v~chronologickém pořadí, jak jednotlivé hrozby přicházely a nakonec v kapitole č. \ref{fig:gantt} uvedu Ganttův diagram, který bude zobrazovat časové působení jednotlivých ransomwarů.
+\cite{wiki-timeline}
+\textcolor{red}{V této práci se zabývám vývojem ransomwaru v~období 2002-2022, konkrétně tedy deseti vybranými. ransomware je konkrétní druh škodlivého software, který je specifický tím, že uživatele napadených počítačů nějakou formou vydírá za~účelem vymámení platby -- výkupného. \uv{Rukojmí} v~tomto procesu mohou být různá. Může se jednat o~zašifrovaná data, nebo výhružku, že~citlivá data uživatele budou zveřejněna na Internetu, nebo přímo kontaktům oběti. V~následující kapitole se~tedy postupně budu zabývat touto tématikou v~chronologickém pořadí, jak jednotlivé hrozby přicházely a nakonec v kapitole č. \ref{fig:gantt} uvedu Ganttův diagram, který bude zobrazovat časové působení jednotlivých ransomwarů.}
 
 
 
 % ============================================================================ %
 %\cast{Teoretická část}
 
-\n{1}{Vybraný ransomware}
-V~této kapitole postupně uvedu jednotlivé ransomwary včetně jejich popisu. Seznam je chronologicky seřazen podle toho, jak jednotlivé hrozby přicházely.
+\n{1}{Zotob}
+První mnou vybraný červ jménem \texttt{Zotob} se objevil 14. srpna 2005\cite{wiki-timeline}\cite{zotob-schneider}. Cílem tohoto červa byly počítače s operačním systémem Windows 2000\cite{zotob-fsecure}.
 
-\n{2}{GPcode}
-Ransomware GPcode napadal operační systém Windows. Na scéně se objevil v červnu 2006 \cite{gpcode-knowbe4}. Šířil se pomocí emailových příloh. Konkrétně se jednalo o skodlivý dokument aplikace Word, který předstíral, že jde o žádost o zaměstnání. Při jeho spuštění upravil registr systému Windows tak, aby došlo ke spuštění GPcode při spuštění počítače. Následně začal vyhledávat na lokálních i vzdálených discích soubory určitého typu\footnote{Uváděny \cite{gpcode-fsecure} jsou soubory typu: \texttt{xls}, \texttt{doc}, \texttt{txt}, \texttt{rtf}, \texttt{zip}, \texttt{rar}, \texttt{dbf}, \texttt{htm}, \texttt{html}, \texttt{jpg}, \texttt{db}, \texttt{db1}, \texttt{db2}, \texttt{asc}, \texttt{pgp}.  V jiném zdroji \cite{gpcode-riskfront} je ale uvedeno, že se může jednat až o 80 různých druhů souborů.}.
+Po spuštění červa v napadeném počítači uložil svou kopii s názvem \texttt{botzor.exe} do systémové složky\cite{zotob-fsecure}. Dále vytvořil záznam v registrech systému, aby umožnil spuštění programu po startu operačního systému. Dále vytvořil mutex s názvem \texttt{B-O-T-Z-O-R}, aby zabráníl spuštění spuštění více, než jedné instance programu. V dalších verzích tohoto červa byl postup stejný, jen se soubory jmenovaly \texttt{csm.exe} ve verzi \texttt{Zotob.B} a \texttt{per.exe} ve verzi \texttt{Zotob.C}.
 
+Název použitého mutexu odpovídá názvu, kterým červa pojmenoval jeho autor. Tedy \texttt{Batzor2005}. Název \texttt{Zotob} pochází od antivirových společností, které hrozbu detekovaly\cite{zotob-wikidot}. Současně se skutečný název červa ve verzi \texttt{Zotob.A} a \texttt{Zotob.B} zapsán do souboru \texttt{hosts}. Konkrétně je tam tedy vepsána zpráva \uv{Botzor2005 Made By .... Greetz to good friend Coder. Based On HellBot3} a \uv{MSG to avs: the first av who detect this worm will be the first killed in the next 24hours!!!}\cite{zotob-fsecure}. Soubor \texttt{hosts} je také upraven, aby přesměroval přístup k některým serverům\footnote{Kompletní seznam je k vidění na stránce \url{https://www.f-secure.com/v-descs/zotob_a.shtml}} na adresu \texttt{127.0.0.1}, tedy \texttt{localhost}\cite{zotob-fsecure}. Také došlo ke spuštění FTP serveru na portu 33333, odkud si mohly další napadené systémy stáhnout tohoto červa\cite{zotob-fsecure}.
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[scale=0.6]{clocker1}
-		\caption{Náhled žádosti o výkupné CryptoLocker, převzato z \url{https://www.avast.com/c-cryptolocker}}
-		\label{fig:clocker1}
-	\end{center}
-\end{figure}
+Ke svému šíření využíval tento červ ve všech verzích zranitelnost MS Windows Plug and Play služby označenou jako \texttt{MS05-039}\cite{zotob-fsecure}. Ve verzi \texttt{Zotob.A} vytvořil 300 vláken, ve verzcíh \texttt{Zotob.B} a \texttt{Zotob.C} pak 200 vláken, která zkoušely vytvořit spojení k náhodným IP adresám generovaným z IP adresy napadeného počítače podle masky podsítě 255.255.0.0\cite{zotob-fsecure}\cite{zotobb-fsecure}\cite{zotobc-fsecure}. Na nalezených IP adresách se pokusil navázal TCP spojení na portu 445 a využít výše uvedené zranitelnosti.
 
+Jedná se ozranitelnost, která umožňuje vzálené spuštění kódu. Touto zranitelností trpělo více operačních systémů, ale právě u Windows 2000 bylo možné vzdálené spuštění kódu i bez ověření uživatele, zatím co na jiných systémech bylo nutné přihlášení\cite{zotob-ms}\cite{zotob-msbulletin}.
 
-\begin{table}[h]
-	\begin{center}
-		\caption{Nejvyšší způsobené škody způsobené ransomwarem \texttt{notPetya}}
-		\vspace{0.3cm}
-		\begin{tabular}{m{22em}m{8em}}
-			\toprule
-			Farmaceutická společnost Merck \cite{merck} & 40\,000 počítačů a 1\,400\,000\,000\,USD \\
-			\midrule
-			Francouzská stavební společnost Saint--Gobain \cite{sweek} & 387\,000\,000\,USD \\
-			\bottomrule
-		\end{tabular}
-		\label{notpetya-impacts}
-	\end{center}
-\end{table}
+Pokud bylo úspěšně navázáno spojení s cílovým systémem protokolem TCP na portu 445, kde běží služba \texttt{Microsoft-ds} \texttt{SMB}\footnote{SMB -- Server Message Block} a podařilo se vzdálené spuštění kódu, došlo ke spuštění shellu na cílovém počítači, který naslouchal na portu 8888. Na tento port byl zaslán FTP sctipt, který zařídil stažení červa skrz FTP do napadeného počítače, kde běží FTP server na portu 33333, jako souboru \texttt{haha.exe} a jeho spuštění\cite{zotob-fsecure}\cite{zotobb-fsecure}.
 
+Každý napadený počítač dokázal přijímat příkazy pomocí IRC a předdefinovaných adresách. Útočník tak mohl dát příkazy například k vyžádání informací o systému, stažení spustitelného souboru, manipulaci s bezpečnostním nastavením systému, nebo odstranení červa ze systému.
 
+Verze \texttt{Zotob.C} pak dokázala využít zranitelnosti v Abstract Syntax Notation 1 popsané jako \texttt{MS04-007}, která učinila zranitelným i systém Windows XP do SP1\cite{zotob-msbulletin2}. Také tato verze využívala ke svému šíření metody phishingu pomocí emailových zpráv.\cite{zotobc-fsecure}
 
-\n{1}{Ganttův Diagram}
+25. srpna 2005 byli zatčeni tři lidé zodpovědní za vznik tohoto červa. Jeho autorem byl osumnáctiletý Maročan, narozený v Rusku, Farid Essebar, který vystupoval pod přezdívkou \uv{Diab10} a jeho dvacetiletý přítel Achraf Bahloul. V Turecku byl zatčen také 21 letý Artilla Ekici s přezdívkou \uv{Coder}, který Essebarovi za vytvoření červa zaplatil.\cite{zotob-schneider}\cite{zotob-fbi}
 
-%\begin{figure}[h!]
-%	\begin{center}
-%		\includegraphics[scale=0.17, angle=90]{gant}
-%		\caption{Ganttův diagram}
-%		\label{fig:gantt}
-%	\end{center}
-%\end{figure}
+Zasaženo bylo více než 100 amerických spočeností\cite{zotob-fbi}. Průměrná cena za zotavení z infekce červem \texttt{Zotob} je podle průzkumu společnosti Cybertrust 97\,000\,USD. 61 procent obětí uvedlo, že vyčištění vyžadovalo 80 hodin práce.\cite{zotob-wikidot}\cite{zotob-cnet} Původní zpráva společnosti však již není dostupná.
 
+\n{1}{Nyxem}
+20.ledna 2006 - šířil se mass-mailing. Aktivoval se 3. každého měsíce, pokusí se deaktivovat software spojený s bezpečností a sdílení souborů a zničí určité typy souborů, jakeo ms office soubory
+\n{2}{Cíl útoku}
+\n{2}{Předpokládaný počet napadených zařízení}
+\n{2}{Identifikační znaky}
+\n{2}{Způsob šíření}
 
-\begin{figure}[h!]
-	\begin{adjustbox}
-    {addcode={
-        \begin{minipage}{\width}}{\caption{Ganttův diagram}
-        \label{fig:gantt}
-        \end{minipage}},rotate=90,center}
-%        %\includegraphics[trim=left bottom right top, clip]{file}
-      \includegraphics[scale=0.18]{gant}
-  \end{adjustbox}
-\end{figure}
+\n{1}{Brontok}
+varianta N koncem března 2006 - mass-email worm s původem v indonesii
+\n{2}{Cíl útoku}
+\n{2}{Předpokládaný počet napadených zařízení}
+\n{2}{Identifikační znaky}
+\n{2}{Způsob šíření}
+
+\n{1}{Stration/Warezov}
+konec září 2006
+\n{2}{Cíl útoku}
+\n{2}{Předpokládaný počet napadených zařízení}
+\n{2}{Identifikační znaky}
+\n{2}{Způsob šíření}
+
+\n{1}{Storm Worm}
+17. ledna 2007 Storm Worm - fast spreading email spamming thread to MS systems. Zařazuje infikované počítače to \"Storm botnet\". Kolem 30. června 2007 infikoval 1.7 milionů počítačů a do září napadl mezi 1 a 10 miliony počítačů. Předpokládá se, že pochází z Ruska. Maskuje se jako zpravodajský email obsahující film o falešných novinářských příbězích a žádá o stažení přílohy o které tvrdí, že je film.
+\n{2}{Cíl útoku}
+\n{2}{Předpokládaný počet napadených zařízení}
+\n{2}{Identifikační znaky}
+\n{2}{Způsob šíření}
+
+\n{1}{Koobface}
+červenec 2008 - cílí na uživatele facebooku a myspace
+\n{2}{Cíl útoku}
+\n{2}{Předpokládaný počet napadených zařízení}
+\n{2}{Identifikační znaky}
+\n{2}{Způsob šíření}
+
+\n{1}{Conficker}
+listopadu 2008 - infikoval 9 až 15 milionů MS server systémů od Windows 2000 do Windows 7 beta. Microsoft vypsal odměnu 250tis USD za informaci vedoucí k dopadení autora. Bylo 5 variant A-(21.list.08) B-(29.pros.08) C-(20.únor.09) D-(4.břez.09) a E-(7.dub.09). 16. prosince 2008 vydal MS záplatu KB958644 opravující zranitelnost odpovědnou za šíření confickera.
+\n{2}{Cíl útoku}
+\n{2}{Předpokládaný počet napadených zařízení}
+\n{2}{Identifikační znaky}
+\n{2}{Způsob šíření}
+
+\n{1}{Daprosy Worm}
+15. července 2009 (objevil Symantec) - trojan worm, vytvoření ke krádeži hesel do online her v internetových kavárnách. Mohl zachytit všechny stisknuté klávesy a zaslat autorovi.
+\n{2}{Cíl útoku}
+\n{2}{Předpokládaný počet napadených zařízení}
+\n{2}{Identifikační znaky}
+\n{2}{Způsob šíření}
+
+\n{1}{Psyb0t}
+leden 2010 - mohl infikovat routery a vysokorychlostní modemy
+\n{2}{Cíl útoku}
+\n{2}{Předpokládaný počet napadených zařízení}
+\n{2}{Identifikační znaky}
+\n{2}{Způsob šíření}
+
+\n{1}{Stuxnet}
+17. červen 2010 - windows trojan, první worm attack na systémy SCADA (dohledová kontrola a sběr dat). Byl navržen aby cílil na Íránská jaderná zařízení. Používal platný certifikát Realtek.
+\n{2}{Cíl útoku}
+\n{2}{Předpokládaný počet napadených zařízení}
+\n{2}{Identifikační znaky}
+\n{2}{Způsob šíření}
+
+\n{1}{Duqu}
+1. září 2011 - předpokládá se, že je příbuzný stuxnetu. Název je z prefixu DQ souborů, které vytváří. CrySyS Lab napsal 60 stránkový elaborát.
+\n{2}{Cíl útoku}
+\n{2}{Předpokládaný počet napadených zařízení}
+\n{2}{Identifikační znaky}
+\n{2}{Způsob šíření}
+
+\n{1}{NGRBot}
+NGRBot září 2012 - červ využívá IRC network pro posílání souborů, posílání a příjem příkazů v mezi zombie sítí a útočníkovým IRC serverem. A monitoruje  a kontroluje síťovou konektivitu. Využívá techniku rootkitu v uživatelském módu ke skrývání a krádeži  informací o oběti.
+\n{2}{Cíl útoku}
+\n{2}{Předpokládaný počet napadených zařízení}
+\n{2}{Identifikační znaky}
+\n{2}{Způsob šíření}
 
 
 % ============================================================================ %
@@ -196,9 +240,9 @@ Ransomware GPcode napadal operační systém Windows. Na scéně se objevil v č
 %\n{2}{Podnadpis}
 % ============================================================================ %
 \nn{Závěr}
-Na základě uvedených příkladů je zřejmé, že ransomware prošel od svého počátku velkým rozvojem. Z velké části se šíří pomocí emailových zpráv, kdy je přiložen samotný ransomware, nebo program, případně skript, který jej stáhne a naintaluje do uživatelova počítače. Úživatelé tak mohli zabránit infekci svého počítače pouze větší obezřejností. Na rozdíl od útoků, které zneužily tzv. zero-day zranitelnosti.
+\textcolor{red}{Na základě uvedených příkladů je zřejmé, že ransomware prošel od svého počátku velkým rozvojem. Z velké části se šíří pomocí emailových zpráv, kdy je přiložen samotný ransomware, nebo program, případně skript, který jej stáhne a naintaluje do uživatelova počítače. Úživatelé tak mohli zabránit infekci svého počítače pouze větší obezřejností. Na rozdíl od útoků, které zneužily tzv. zero-day zranitelnosti.}
 
-Dále po útoku ransomwaru \texttt{Reveton}, o kterém jsem psal v kapitole č.~\ref{reveton}, je znatelná změna ve vývoji ransomwaru, který používali sami vývojáři do modelu, kdy je ransomware poskytován za úplatu jako služba -- RaaS.
+\textcolor{red}{Dále po útoku ransomwaru \texttt{Reveton}, o kterém jsem psal v kapitole č.~\ref{reveton}, je znatelná změna ve vývoji ransomwaru, který používali sami vývojáři do modelu, kdy je ransomware poskytován za úplatu jako služba -- RaaS.}
 
 
 % ============================================================================ %
@@ -211,14 +255,82 @@ Dále po útoku ransomwaru \texttt{Reveton}, o kterém jsem psal v kapitole č.~
 \seznamlit{
   % Na toto místo vložit veškeré citované bibliografické položky.
   % http://generator-citaci.cz/
-	\bibitem{flashpoint-history}
+
+	\bibitem{wiki-timeline}
 	{
-		The History and Evolution of Ransomware Attacks | Flashpoint.
-		\it{Flashpoint | Cyber Threat Intelligence Platform \& Professional Services} [online].
-		Copyright © 2022 Flashpoint. All rights reserved. [cit. 2022-10-13].
-		Dostupný z~WWW: \url{https://flashpoint.io/blog/the-history-and-evolution-of-ransomware-attacks/}
-	}  
+		Timeline of computer viruses and worms | Wikipedia.
+		\it{Wikipedia, the free encyclopedia} [online]. [cit. 2022-11-18].
+		Dostupné z: \url{https://en.wikipedia.org/wiki/Timeline_of_computer_viruses_and_worms}
+	}
 	
+	\bibitem{zotob-schneider}
+	{
+		The Zotob Worm - Schneier on Security.
+		\it{Schneier on Security} [online]. [cit. 2022-11-18].
+		Dostupné z: \url{https://www.schneier.com/blog/archives/2005/11/the_zotob_worm.html}
+	}
+	
+	\bibitem{zotob-wikidot}
+	{
+		Zotob - The Virus Encyclopedia.
+		\it{The Virus Encyclopedia} [online]. [cit. 2022-11-18].
+		Dostupné z: \url{http://virus.wikidot.com/zotob}
+	}
+	
+	\bibitem{zotob-fsecure}
+	{
+		Zotob.A Description | F-Secure Labs.
+		[online]. Copyright © F [cit. 18.11.2022].
+		Dostupné z: \url{https://www.f-secure.com/v-descs/zotob_a.shtml}
+	}
+	\bibitem{zotobb-fsecure}
+	{
+		Zotob.B Description | F-Secure Labs.
+		[online]. Copyright © F [cit. 18.11.2022].
+		Dostupné z: \url{https://www.f-secure.com/v-descs/zotob_b.shtml}
+	}
+	\bibitem{zotobc-fsecure}
+	{
+		Zotob.C Description | F-Secure Labs.
+		[online]. Copyright © F [cit. 18.11.2022].
+		Dostupné z: \url{https://www.f-secure.com/v-descs/zotob_c.shtml}
+	}
+	
+	\bibitem{zotob-ms}
+	{
+		Microsoft Security Advisory 899588 | Microsoft Learn.
+		[online]. Copyright © Microsoft 2022 [cit. 18.11.2022]. 
+		Dostupné z: \url{https://learn.microsoft.com/en-us/security-updates/securityadvisories/2005/899588}
+	}
+	
+	\bibitem{zotob-msbulletin}
+	{
+		Microsoft Security Bulletin MS05-039 - Critical | Microsoft Learn
+		[online]. Copyright © Microsoft 2022 [cit. 18.11.2022]. 
+		Dostupné z: \url{https://learn.microsoft.com/en-us/security-updates/securitybulletins/2005/ms05-039}
+	}
+	
+	\bibitem{zotob-msbulletin2}
+	{
+		Microsoft Security Bulletin MS04-007 - Critical | Microsoft Learn
+		[online]. Copyright © Microsoft 2022 [cit. 18.11.2022]. 
+		Dostupné z: \url{https://learn.microsoft.com/en-us/security-updates/securitybulletins/2004/ms04-007}
+	}
+	
+	\bibitem{zotob-fbi}
+	{
+		FBI — Moroccan Authorities Sentence Two in Zotob Computer Worm Attack. 
+		[online]. [cit. 2022-11-18].
+		Dostupné z: \url{https://archives.fbi.gov/archives/news/pressrel/press-releases/moroccan-authorities-sentence-two-in-zotob-computer-worm-attack}
+	}
+	
+	\bibitem{zotob-cnet}
+	{
+		Zotob damage deep but not widespread - CNET. 
+		\it{CNET: Product reviews, advice, how-tos and the latest news}
+		[online]. Copyright © 2022 CNET, a Red Ventures company. All rights reserved. [cit. 18.11.2022].
+		Dostupné z: \url{https://www.cnet.com/news/privacy/zotob-damage-deep-but-not-widespread/}
+	}
 }
 
 % Pro generování literatury lze alternativně použít i příkaz "\seznamlitbib", 
