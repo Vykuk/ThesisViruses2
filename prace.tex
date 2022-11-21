@@ -84,7 +84,8 @@
 	to-má-še sou-bo-ry u-pra-vil od-stra-nit i-den-ti-fi-ko-vat bli-ka-jí-cím 
 	in-sta-lo-vat způ-so-be-né al-go-rit-mem nej-čas-tě-ji ne-za-pla-ti-la
 	ši-fro-va-cí pos-ky-tnu-té-ho při-chá-ze-ly žád-ná va-ri-an-ty web-ka-me-ra
-	zra-ni-tel-nos-ti za-ši-fro-vá-ní sou-bo-ru vy-ge-ne-ro-val za-hr-nu-jí-cí}  
+	zra-ni-tel-nos-ti za-ši-fro-vá-ní sou-bo-ru vy-ge-ne-ro-val za-hr-nu-jí-cí
+	na-pa-de-né-mu}  
 
 % ============================================================================ %
 \begin{document}
@@ -151,12 +152,39 @@ Verze \texttt{Zotob.C} pak dokázala využít zranitelnosti v Abstract Syntax No
 
 Zasaženo bylo více než 100 amerických spočeností\cite{zotob-fbi}. Průměrná cena za zotavení z infekce červem \texttt{Zotob} je podle průzkumu společnosti Cybertrust 97\,000\,USD. 61 procent obětí uvedlo, že vyčištění vyžadovalo 80 hodin práce.\cite{zotob-wikidot}\cite{zotob-cnet} Původní zpráva společnosti však již není dostupná.
 
-\n{1}{Nyxem}
-20.ledna 2006 - šířil se mass-mailing. Aktivoval se 3. každého měsíce, pokusí se deaktivovat software spojený s bezpečností a sdílení souborů a zničí určité typy souborů, jakeo ms office soubory
-\n{2}{Cíl útoku}
-\n{2}{Předpokládaný počet napadených zařízení}
-\n{2}{Identifikační znaky}
-\n{2}{Způsob šíření}
+\n{1}{Nyxem.E}
+Další z vybraných červů se objevil 20. ledna 2006\cite{nyxem-wiki}. Jeho cílem byl operační systém Windows. Je také znám pod dalšími jmény, jako \texttt{Blackworm}, \texttt{Kama Sutra}, \texttt{MyWife}, \texttt{CME-24}\dots\cite{nyxem-caida} Je napsán ve Visual Basicu a skompilován jako spustitelný soubor p-code a jeho velikost je 95kB. Jeho tělo obsahuje řetězce \uv{mysoulmystfly}, \uv{offlinehacker}, uv{evilpain} a \uv{setthesun}.\cite{nyxem-fsecure} 
+
+Dokázal se šířit elektronickou poštou a nebo pomocí sdílených jednotek v síti. Napadenému uživateli tak mohl přijít jako příloha v emailu, kdy se snažil tvářit jako archiv \texttt{ZIP}. Pokud uživatel tento soubor spustil, otevřel se uživateli program WinZip, aby nabyl dojmu, že otevřel obyčejný archiv\cite{nyxem-trendmicro}. Současně také mohlo dojít k zablokování vstupů z klávesnice a myši, čím mělo být zabráněno uživateli v odhlášení, nebo spuštění správce úloh\cite{nyxem-fsecure}\cite{nyxem-trendmicro}. Také je kontaktována určitá webová stránka, která slouží jako počítadlo populace infikovaných počítačů.
+
+V této chvíli červ vytvoří své kopie ve složce \texttt{\%WINDOWS\%}\footnote{Obvykle se 
+jedná o složku C:\textbackslash Windows\textbackslash } soubor \texttt{rundll16.exe}, ve složce \texttt{\%SYSTEM\%}\footnote{Obvykle se jedná o složku C:\textbackslash Windows\textbackslash System32\textbackslash } soubory \texttt{scanregw.exe}, \texttt{Update.exe}, \texttt{Winzip.exe}, \texttt{WINZIP\_TMP.exe} a ve složce \texttt{\%SYSTEM ROOT\%\textbackslash Documents and Settings\textbackslash All Users\textbackslash Start Menu\textbackslash Pro\-grams\textbackslash Startup\textbackslash }\footnote{\%SYSTEEM ROOT\% je nahrazen kořenovým adresářem, kde je instalován Windows, tedy obvykle C:\textbackslash } soubor \texttt{Quick Pick.exe}.\cite{nyxem-fsecure}\cite{nyxem-trendmicro}
+
+Následně červ upraví záznamy v registrech systému, aby v průzkumníku souborů zakázal zobrazení skrytých souborů, zajistil si spuštění při startu počítače a zabránil při startu spuštění různých antivirových produktů. Dále prohledá složky, kde se obvykle nachází antivirové programy, a pokusí se vymazat některé, případně všechny, jejich soubory. Mimo to se snaží odstanit i jiné programy, jako například \texttt{LimeWire}\footnote{LimeWire - je program určený pro P2P sdílení}.\cite{nyxem-caida}\cite{nyxem-fsecure}\cite{nyxem-trendmicro}
+
+Ve chvíli, kdy je počítač infikován, tak kontroluje spouštěné programy a pokud nalezne titulek obsahující konkrétní řetězec, tak se pokusí program ukončit\cite{nyxem-fsecure}. Přiklad je k vidění i na YouTube\cite{nyxem-youtube}, kde v jedné části dochází k ukončení aplikace \texttt{Notepad}, které otevírá soubor \texttt{SCAN.txt}, čímž se jí do titulku dostalo hledané klíčové slovo.
+
+Jednou měsíčně, konkrétně každého 3. dne v měsíci, počínaje dnem 3. 2. 2006, je pak spuštěn program \texttt{Update.exe}, který v počítači vyhledá všechny soubory s koncovkami \texttt{DOC}, \texttt{XLS}, \texttt{MDB}, \texttt{MDE}, \texttt{PPT}, \texttt{PPS}, \texttt{ZIP}, \texttt{RAR}, \texttt{PDF}, \texttt{PSD} a \texttt{DMP} a obsah těchto souborů přešpíše 32B dlouhým řetězcem, který převeden do ASCII zní \uv{DATA ERROR [47 0F 94 93 F4 K5]}. Poslední 2B jsou hodnoty \texttt{0D 0A}, což jsou netisknutelné znaky pro konec řádku.\cite{nyxem-securelist}\cite{nyxem-fsecure}
+
+V počítači a ve složce, kde je uložena cache programu Internet Explorer vyhledává soubory s určitými koncovkami a snaží se z nich vytěžit emailové adresy. Pokud tyto adresy ale obsahují určitá klíčová slova, jako například \uv{mcafee}, nebo \uv{spam}, tak je ignoruje\cite{nyxem-fsecure}. Červ obsahuje svůj vlastní SMTP engine\cite{nyxem-trendmicro} a pomocí něj se snaží šířit na vytěžené emailové adresy. Má své předdefinované předměty a těla zpráv. Sám sebe pak do zpráv připojí jako přílohu.\cite{nyxem-fsecure}
+
+Pro šíření v síti má dvě rutiny. První z nich prohlídne v registru umístění složek, kde jsou osobní dokumenty, nebo nedávno otevřené dokumenty. Pokud takové nalezne, tak složky projde a náhodně si vybere název souboru a připojí k němu koncovku \texttt{EXE}. Následně vyhledá sdílené jednotky v síti a na vyhledané jednotce vytvoří nový soubor se vzniklým jménem, který ale obsahuje tělo červa. Pokud nenalezne žádný vhondý soubor, jehož název by mohl okopírovat, tak použije \uv{New WinZip File.exe}, \uv{Zipped Files.exe}, nebo \uv{movies.exe}.\cite{nyxem-fsecure}
+
+Druhá varianta je pak, že prohledá sdílené jednotky v síti a tam se snaží zkopírovat jako:
+\begin{itemize}
+	\item \textbackslash Admin\$\textbackslash WINZIP\_TMP.exe
+	\item \textbackslash c\$\textbackslash WINZIP\_TMP.exe
+	\item \textbackslash c\$\textbackslash Documents and Settings\textbackslash All Users\textbackslash Start Menu\textbackslash Programs\textbackslash Startup\textbackslash WinZip Quick Pick.exe
+	\begin{itemize}
+		\item V tomto případě ve stejné složce odstraní soubor \uv{WinZip Quick Pick.lnk}
+	\end{itemize}
+\end{itemize}
+Také se snaží zjistit, zda existuje na sdílené jednotce antivirový program tím, že prohledává konkrétná složky jako napříkald \uv{\textbackslash c\$\textbackslash Program Files\textbackslash Norton AntiVirus}, a pokud nalezne, tak se je snaží odstanit. Také se pokusí na vzáleném počítači spustit plánovanou úlohu na 59. minutu aktuální hodiny, která by spustila nakopírované tělo červa.\cite{nyxem-fsecure}
+
+Tím, že \texttt{Nyxem} při své instalaci kontaktuje určitou webovou stránku, která funguje jako počítadlo populace, je mělo by být možné odhadnout kolik počítačů bylo infikováno. Dle analýzy Davida Moora a Collen Shannon je odhad infikovaných počítačů mezi 469\,507 až 946\,835 ve více než 200 zemích za obcodbí 15. ledna 2006 23:40:45\,UTC do 1. února 2006 05:00:12\,UTC.\cite{nyxem-caida}
+
+Přes to však dle zprávy společnosti F-Secure může být započítáno více přístupů z jedné IP adresy. Výsledné číslo podle nich pak vychází na více než 300\,000 unikátních IP adres.\cite{nyxem-fsecure}
+
 
 \n{1}{Brontok}
 varianta N koncem března 2006 - mass-email worm s původem v indonesii
@@ -330,6 +358,47 @@ NGRBot září 2012 - červ využívá IRC network pro posílání souborů, pos
 		\it{CNET: Product reviews, advice, how-tos and the latest news}
 		[online]. Copyright © 2022 CNET, a Red Ventures company. All rights reserved. [cit. 18.11.2022].
 		Dostupné z: \url{https://www.cnet.com/news/privacy/zotob-damage-deep-but-not-widespread/}
+	}
+	
+	\bibitem{nyxem-wiki}
+	{
+		Blackworm | Wikipedia.
+		\it{Wikipedia, the free encyclopedia} [online]. [cit. 2022-11-21].
+		Dostupné z: \url{https://en.wikipedia.org/wiki/Blackworm}
+	}
+	
+	\bibitem{nyxem-caida}
+	{
+		David Moore, Colleen Shannon,
+		The Nyxem Email Virus: Analysis and Inferences - CAIDA.
+		\it{CAIDA} [online]. [cit. 2022-11-21].
+		Dostupné z: \url{https://www.caida.org/archive/blackworm/}
+	}
+	\bibitem{nyxem-securelist}
+	{
+		Nyxem.e’s dreaded 32 bytes | Securelist.
+		\it{Securelist | Kaspersky’s threat research and reports} [online].
+		Copyright © 2022 AO Kaspersky Lab. All Rights Reserved. [cit. 21.11.2022].
+		Dostupné z: \url{https://securelist.com/nyxem-es-dreaded-32-bytes/30127/}
+	}
+	\bibitem{nyxem-fsecure}
+	{
+		Email-Worm:W32/Nyxem.E Description | F-Secure Labs.
+		[online]. Copyright © F [cit. 21.11.2022].
+		Dostupné z: \url{https://www.f-secure.com/v-descs/nyxem_e.shtml}
+	}
+	\bibitem{nyxem-trendmicro}
+	{
+		WORM\_NYXEM.E - Threat Encyclopedia.
+		[online]. Copyright © 2022 Trend Micro Incorporated. All rights reserved.
+		[cit. 21.11.2022].
+		Dostupné z: \url{https://www.trendmicro.com/vinfo/us/threat-encyclopedia/malware/WORM_NYXEM.E/}
+	}
+	\bibitem{nyxem-youtube}
+	{
+		Email-Worm.Win32.Nyxem.E - YouTube.
+		\it{YouTube} [online]. Copyright © 2022 Google LLC [cit. 21.11.2022].
+		Dostupné z: \url{https://www.youtube.com/watch?v=Fh0KxSuA0kY}
 	}
 }
 
