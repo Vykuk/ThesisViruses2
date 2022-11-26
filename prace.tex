@@ -85,7 +85,7 @@
 	in-sta-lo-vat způ-so-be-né al-go-rit-mem nej-čas-tě-ji ne-za-pla-ti-la
 	ši-fro-va-cí pos-ky-tnu-té-ho při-chá-ze-ly žád-ná va-ri-an-ty web-ka-me-ra
 	zra-ni-tel-nos-ti za-ši-fro-vá-ní sou-bo-ru vy-ge-ne-ro-val za-hr-nu-jí-cí
-	na-pa-de-né-mu}  
+	na-pa-de-né-mu sys-té-mu in-fi-ko-va-né-mu pro-střed-nic-tvím}  
 
 % ============================================================================ %
 \begin{document}
@@ -185,58 +185,40 @@ Tím, že \texttt{Nyxem} při své instalaci kontaktuje určitou webovou stránk
 
 Přes to však dle zprávy společnosti F-Secure může být započítáno více přístupů z jedné IP adresy. Výsledné číslo podle nich pak vychází na více než 300\,000 unikátních IP adres.\cite{nyxem-fsecure}
 
-
-\n{1}{Brontok}
-varianta N koncem března 2006 - mass-email worm s původem v indonesii
-\n{2}{Cíl útoku}
-\n{2}{Předpokládaný počet napadených zařízení}
-\n{2}{Identifikační znaky}
-\n{2}{Způsob šíření}
-
-\n{1}{Stration/Warezov}
-konec září 2006
-\n{2}{Cíl útoku}
-\n{2}{Předpokládaný počet napadených zařízení}
-\n{2}{Identifikační znaky}
-\n{2}{Způsob šíření}
-
-\n{1}{Storm Worm}
-17. ledna 2007 Storm Worm - fast spreading email spamming thread to MS systems. Zařazuje infikované počítače to \"Storm botnet\". Kolem 30. června 2007 infikoval 1.7 milionů počítačů a do září napadl mezi 1 a 10 miliony počítačů. Předpokládá se, že pochází z Ruska. Maskuje se jako zpravodajský email obsahující film o falešných novinářských příbězích a žádá o stažení přílohy o které tvrdí, že je film.
-\n{2}{Cíl útoku}
-\n{2}{Předpokládaný počet napadených zařízení}
-\n{2}{Identifikační znaky}
-\n{2}{Způsob šíření}
-
-\n{1}{Koobface}
-červenec 2008 - cílí na uživatele facebooku a myspace
-\n{2}{Cíl útoku}
-\n{2}{Předpokládaný počet napadených zařízení}
-\n{2}{Identifikační znaky}
-\n{2}{Způsob šíření}
-
 \n{1}{Conficker}
-listopadu 2008 - infikoval 9 až 15 milionů MS server systémů od Windows 2000 do Windows 7 beta. Microsoft vypsal odměnu 250tis USD za informaci vedoucí k dopadení autora. Bylo 5 variant A-(21.list.08) B-(29.pros.08) C-(20.únor.09) D-(4.břez.09) a E-(7.dub.09). 16. prosince 2008 vydal MS záplatu KB958644 opravující zranitelnost odpovědnou za šíření confickera.
-\n{2}{Cíl útoku}
-\n{2}{Předpokládaný počet napadených zařízení}
-\n{2}{Identifikační znaky}
-\n{2}{Způsob šíření}
+V listopadu 2008 byl poprvé detekován červ, který byl pojmenován \texttt{Conficker}, nebo také \texttt{Downup}, \texttt{Downadup}, nebo \texttt{Kido}. Tento červ cílil na zranitelnost \texttt{MS08-067}, kterou trpěly počítače s operačním systémem Windows.\cite{conficker-wiki}
 
-\n{1}{Daprosy Worm}
-15. července 2009 (objevil Symantec) - trojan worm, vytvoření ke krádeži hesel do online her v internetových kavárnách. Mohl zachytit všechny stisknuté klávesy a zaslat autorovi.
-\n{2}{Cíl útoku}
-\n{2}{Předpokládaný počet napadených zařízení}
-\n{2}{Identifikační znaky}
-\n{2}{Způsob šíření}
+Zranitelnost umožňovala vzdálené spuštění kódu na počítačích s operačním systémem Windows 2000 (SP4), Windows XP (SP2 a SP3), Windows Server 2003 (SP1 a SP2), Windows Vista, Windows Server 2008 a Windows 7 pomocí protokolu RPC\footnote{Remote Procedure Call -- klient-server služba, kdy klient může vyžádat službu od programu umístěného na jiném počítači}. Zneužitím této chyby je možné na vzdáleném počítači manipulovat s daty, instalovat aplikace, nebo vytvořit uživatelský účet s právy administrátora.\cite{conficker-ms}\cite{conficker-malwarebytes}
 
-\n{1}{Psyb0t}
-leden 2010 - mohl infikovat routery a vysokorychlostní modemy
-\n{2}{Cíl útoku}
-\n{2}{Předpokládaný počet napadených zařízení}
-\n{2}{Identifikační znaky}
-\n{2}{Způsob šíření}
+Na operačních systémech Windows 2000, Windows XP a Windows Server 2003 je možné této zranitelnosti využít anonymním uživatelem, tedy kýmkoliv, kdo má přístup k dané síti. Na ostatních operačních systémech vyjmenovaných výše je však nutné ověření uživatele. Operační systému Windows 7 byl zranitelný jen ve verzi \uv{Pre-Beta}.\cite{conficker-ms}
+
+Pomocí výše uvedené zranitelnosti operačních systémů Windows se šířil dokázal šířit téměř ve všech svých verzích. Ve verzích \texttt{Conficker.B} a \texttt{Conficker.C} se pak dokázal šířit prostřednictvým vyjímatelných médií, jako jsou USB Flash, nebo na sdíléné diskové jednotky ostatních počítačů v síti, kam se zkoušel připojit pomocí slovníkového útoku přes účet Administrátora.\cite{conficker-wiki}\cite{conficker-trendmicro}\cite{conficker-fsecure}
+
+K šíření pomocí vyjímatelných médií využíval výchozího nastavení operačního systému, kdy bylo povoleno automatické spuštění. Při připojení vyjímatelného disku k infikovanému počítači tak byl vytvořen soubor \texttt{autorun.inf}, který po připojení k novému počítači s výchozím nastavením zajistil spuštění těla červa. Samotné tělo pak uložil do složky \texttt{RECYCLER} s náhodným názvem souboru a koncovkou.\cite{conficker-trendmicro}
+
+Při spuštění na čistém počítači uložil své tělo jako knihovnu \texttt{DLL} s náhodným názvem do složky \texttt{\%SYSTEM\%}\footnote{Obvykle se jedná o složku C:\textbackslash Windows\textbackslash System32\textbackslash}, případně do složky programu \texttt{Internet Explorer}, nebo \texttt{Movie Maker}.\cite{conficker-trendmicro}
+
+Následně pak upravil registry systému, aby si zajistil spuštění po startu prostřednictvím legitimního souboru \texttt{rundll32.exe}, nebo \texttt{svchost32.exe}. Aby zamezil svému nalezení, upravil také registry, aby se v průzkumníku souborů nezobrazovaly skryté a systémové soubory.\cite{conficker-trendmicro}
+
+V počítači zakázal běh některých služeb, zejména Windows Automatic Update Service, nebo Windows Defender Service a pokud zjistil, že běží na operačním systému Windows Vista, pak zakázal automatické ladění protokolu TCP/IP. Napadne API operačního systému, poskytující komunikaci s DNS, aby zabránil přístupu k určitým doménám, které jsou zaměřeny na počítačovou bezpečnost.\cite{conficker-fsecure}
+
+Každý den červ kontaktoval jednu z pěti domén, aby získal aktuální datum, pomocí kterého generoval seznam domén, odkud mohl stáhnout další soubory.\cite{conficker-fsecure}
+
+Odhad počtu napadených počítaču ze dne 16. ledna 2009 dle společnosti F-Secure je necelých 9 miliónů\cite{conficker-fsecure2}. Podle článku na serveru ZDNET z 10. června 2015 mohlo být stále ještě infikováno okolo 500\,000 zařízení. Společnost Microsoft dokonce vypsala odměnu 250\,000\,USD za informace vedoucí k zatčení osob, zodpovědných za vypuštění tohoto červa\cite{conficker-zdnet}.
 
 \n{1}{Stuxnet}
 17. červen 2010 - windows trojan, první worm attack na systémy SCADA (dohledová kontrola a sběr dat). Byl navržen aby cílil na Íránská jaderná zařízení. Používal platný certifikát Realtek.
+
+\url{https://en.wikipedia.org/wiki/Stuxnet}
+
+\url{https://www.malwarebytes.com/stuxnet}
+
+\url{https://www.avast.com/c-stuxnet}
+
+\url{https://nordvpn.com/blog/stuxnet-virus/}
+
+
+
 \n{2}{Cíl útoku}
 \n{2}{Předpokládaný počet napadených zařízení}
 \n{2}{Identifikační znaky}
@@ -244,17 +226,18 @@ leden 2010 - mohl infikovat routery a vysokorychlostní modemy
 
 \n{1}{Duqu}
 1. září 2011 - předpokládá se, že je příbuzný stuxnetu. Název je z prefixu DQ souborů, které vytváří. CrySyS Lab napsal 60 stránkový elaborát.
+
+\url{https://en.wikipedia.org/wiki/Duqu}
+
+\url{https://www.radware.com/security/ddos-knowledge-center/ddospedia/duqu/}
+
+\url{https://scadahacker.com/resources/duqu.html}
+
 \n{2}{Cíl útoku}
 \n{2}{Předpokládaný počet napadených zařízení}
 \n{2}{Identifikační znaky}
 \n{2}{Způsob šíření}
 
-\n{1}{NGRBot}
-NGRBot září 2012 - červ využívá IRC network pro posílání souborů, posílání a příjem příkazů v mezi zombie sítí a útočníkovým IRC serverem. A monitoruje  a kontroluje síťovou konektivitu. Využívá techniku rootkitu v uživatelském módu ke skrývání a krádeži  informací o oběti.
-\n{2}{Cíl útoku}
-\n{2}{Předpokládaný počet napadených zařízení}
-\n{2}{Identifikační znaky}
-\n{2}{Způsob šíření}
 
 
 % ============================================================================ %
@@ -399,6 +382,51 @@ NGRBot září 2012 - červ využívá IRC network pro posílání souborů, pos
 		Email-Worm.Win32.Nyxem.E - YouTube.
 		\it{YouTube} [online]. Copyright © 2022 Google LLC [cit. 21.11.2022].
 		Dostupné z: \url{https://www.youtube.com/watch?v=Fh0KxSuA0kY}
+	}
+	
+	\bibitem{conficker-wiki}
+	{
+		Conficker | Wikipedia.
+		\it{Wikipedia, the free encyclopedia} [online]. [cit. 2022-11-26].
+		Dostupné z: \url{https://en.wikipedia.org/wiki/Conficker}
+	}	
+	\bibitem{conficker-ms}
+	{
+		Microsoft Security Bulletin MS08-067 - Critical | Microsoft Learn.
+		[online]. Copyright © Microsoft 2022 [cit. 26.11.2022].
+		Dostupné z: \url{https://learn.microsoft.com/en-us/security-updates/securitybulletins/2008/ms08-067}
+	}
+	\bibitem{conficker-malwarebytes}
+	{
+		Worm.Conficker | Malwarebytes Labs.
+		\it{Malwarebytes Cybersecurity for Home and Business | Anti-Malware \& Antivirus}
+		[online]. Copyright © 2022 All Rights Reserved [cit. 26.11.2022].
+		Dostupné z: \url{https://www.malwarebytes.com/blog/detections/worm-conficker}
+	}
+	\bibitem{conficker-trendmicro}
+	{
+		CONFICKER - Threat Encyclopedia.
+		[online]. Copyright © 2022 Trend Micro Incorporated. All rights reserved. [cit. 26.11.2022].
+		Dostupné z: \url{https://www.trendmicro.com/vinfo/us/threat-encyclopedia/malware/conficker}
+	}
+	\bibitem{conficker-fsecure}
+	{
+		Worm:W32/Downadup.AL Description | F-Secure Labs.
+		[online]. Copyright © F [cit. 26.11.2022].
+		Dostupné z: \url{https://www.f-secure.com/v-descs/worm_w32_downadup_al.shtml}
+	}
+	\bibitem{conficker-fsecure2}
+	{
+		News from the Lab Archive : January 2004 to September 2015.
+		\it{Archive | F-Secure} [online]. [cit. 26.11.2022].
+		Dostupné z: \url{https://archive.f-secure.com/weblog/archives/00001584.html}
+	}
+	\bibitem{conficker-zdnet}
+	{
+		Opening up a can of worms: Why won't Conficker just die, die, die? | ZDNET.
+		\it{News and Advice on the World's Latest Innovations | ZDNET}
+		[online]. Copyright © 2022 ZDNET, A Red Ventures company. All rights reserved. [cit. 26.11.2022].
+		Dostupné z: \url{https://www.zdnet.com/article/opening-up-a-can-of-worms-why-wont-conficker-just-die-die-die/}
 	}
 }
 
