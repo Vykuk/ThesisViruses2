@@ -85,7 +85,7 @@
 	in-sta-lo-vat způ-so-be-né al-go-rit-mem nej-čas-tě-ji ne-za-pla-ti-la
 	ši-fro-va-cí pos-ky-tnu-té-ho při-chá-ze-ly žád-ná va-ri-an-ty web-ka-me-ra
 	zra-ni-tel-nos-ti za-ši-fro-vá-ní sou-bo-ru vy-ge-ne-ro-val za-hr-nu-jí-cí
-	na-pa-de-né-mu sys-té-mu in-fi-ko-va-né-mu pro-střed-nic-tvím}  
+	na-pa-de-né-mu sys-té-mu in-fi-ko-va-né-mu pro-střed-nic-tvím u-ži-va-tel-ský-mi}  
 
 % ============================================================================ %
 \begin{document}
@@ -123,10 +123,7 @@
 
 % ============================================================================ %
 \nn{Úvod}
-\cite{wiki-timeline}
-\textcolor{red}{V této práci se zabývám vývojem ransomwaru v~období 2002-2022, konkrétně tedy deseti vybranými. ransomware je konkrétní druh škodlivého software, který je specifický tím, že uživatele napadených počítačů nějakou formou vydírá za~účelem vymámení platby -- výkupného. \uv{Rukojmí} v~tomto procesu mohou být různá. Může se jednat o~zašifrovaná data, nebo výhružku, že~citlivá data uživatele budou zveřejněna na Internetu, nebo přímo kontaktům oběti. V~následující kapitole se~tedy postupně budu zabývat touto tématikou v~chronologickém pořadí, jak jednotlivé hrozby přicházely a nakonec v kapitole č. \ref{fig:gantt} uvedu Ganttův diagram, který bude zobrazovat časové působení jednotlivých ransomwarů.}
-
-
+V této práci se zabývám vývojem počítačovým červů v období od roku 2005 do současnosti. Vybral jsem 5 červů\cite{wiki-timeline}, o kterých pojednávám v následujících kapitolách. Červ je škodlivý software, který je specifický tím, že se dokáže sám šířit. Ke svému šíření používají různé techniky. Od rozesílání elektronickou poštou, nebo kopírování svého těla na přenosné, nebo sdílené jednotky až po zneužití zero-day zranitelností, kdy se dokáže sám instalovat do napadeného počítače bez nutnosti spolupráce uživatele.
 
 % ============================================================================ %
 %\cast{Teoretická část}
@@ -207,22 +204,19 @@ Každý den červ kontaktoval jednu z pěti domén, aby získal aktuální datum
 Odhad počtu napadených počítaču ze dne 16. ledna 2009 dle společnosti F-Secure je necelých 9 miliónů\cite{conficker-fsecure2}. Podle článku na serveru ZDNET z 10. června 2015 mohlo být stále ještě infikováno okolo 500\,000 zařízení. Společnost Microsoft dokonce vypsala odměnu 250\,000\,USD za informace vedoucí k zatčení osob, zodpovědných za vypuštění tohoto červa\cite{conficker-zdnet}.
 
 \n{1}{Stuxnet}
-17. červen 2010 - windows trojan, první worm attack na systémy SCADA (dohledová kontrola a sběr dat). Byl navržen aby cílil na Íránská jaderná zařízení. Používal platný certifikát Realtek.
+15. června 2010 byl identifikován červ \texttt{Stuxnet}, který byl vyvíjen již od roku 2005. V lednu 2010 bylo prověřováno, proč v závodu na obohacování uranu v Natanzu selhávají ve větší míře centrifugy na obohacování uranu. Až po dalších pěti měsících se výzkumníkům podařilo nalézt škodivé soubory v jednom systému. Červ dokázal infikovat více než 20\,000 zařízení ve 14 Íránskách jaderných zařízeních a zničil okolo 900 centrifug.\cite{stuxnet-nordvpn}
 
-\url{https://en.wikipedia.org/wiki/Stuxnet}
+Vzhledem k tomu se \texttt{Stuxnet} považuje za kybernetickou zbraň, vytvořenou právě k tomu, aby napadl právě Íranská jaderná zařízení a narušil tak Íránský jaderný program\cite{stuxnet-avast}. Vzhledem k tomu, že jaderná zařízení nejsou připojena k internetu, byl tento červ navržen tak, aby se dokázal efektivně šířit pomocí vyměnitelných médií\cite{stuxnet-nordvpn}.
 
-\url{https://www.malwarebytes.com/stuxnet}
+Ka svému šíření využíval zranitelnost \texttt{CVE-2010-2568}, která spočívala v tom, jak operační systémy Windows zachází se soubory \texttt{LNK}, což je odkaz, sloužící ke spuštění programu. Tuto zranitelnost měly operační systémy Windows XP, Windows Server 2003, Windows Vista, Windows Server 2008 a Windows 7. U všech zmiňovaných operačních systému je zranitelnost označena jako kritická. Speciálně upravený \texttt{LNK} soubor měl nastavenou ikonu, ale při pokusu o zobrazení této ikony v průzkumníku souboru, nebo prohlížeči Internet Explorer, došlo ke spuštění škodlivého kódu s uživatelskými právy právě přihlášeného uživatele.\cite{stuxnet-ms}
 
-\url{https://www.avast.com/c-stuxnet}
+Kromě těchto operačních systému, se červ zaměřoval také na řídící systém Siemens PCS 7, WinCC a STEP7, což je software, který slouží k řízení, sběru a reprezentaci dat z řídících systémů\cite{stuxnet-nordvpn}.
 
-\url{https://nordvpn.com/blog/stuxnet-virus/}
+Při spuštění byly na napadeném počítači vytvořeny soubory \texttt{mrxcls.sys} a \texttt{mrxnet.sys}, které se uložily do složky \texttt{C:\textbackslash System32\textbackslash Drivers}. Do složky \texttt{C:\textbackslash Windows\textbackslash inf} byly pak uloženy další důležité \texttt{PNF} soubory, z nichž hlavní komponenta je \texttt{oem7a.PNF}, což je šifrovaný soubor \texttt{DLL}.\cite{stuxnet-fsecure}
 
+Po úspěšném spuštění a detekci, za jsou k počítači připojeny systémy pro řídící jednotky Siemens jsou upravovány signály senzorů, které v řídícím systému mohou bezpečně vypnout řízený proces. Také upravil program v řídících jednotkách, aby ovlivnil fkrekvenční měniče pohonů centrifug. Ty pak točily dlouhou dobu vysokou rychlostí, aby došlo k jejich poškození. Údaje ze senzorů ale byly falšovány a obsluha nemohla zjistit, že něco není v pořádku.\cite{stuxnet-nordvpn}\cite{stuxnet-avast}
 
-
-\n{2}{Cíl útoku}
-\n{2}{Předpokládaný počet napadených zařízení}
-\n{2}{Identifikační znaky}
-\n{2}{Způsob šíření}
+\texttt{Stuxnet} se ale dostal i na počítače, které byly připojeny k Internetu a mohl se tak rozšířit i mimo cílová zařízení a mohl infikovat více, než 200\,000 zařízení\cite{stuxnet-zdnet}. Jeho kód tam mohl sloužit jako inspirace pro vznit dalších červů\cite{stuxnet-avast}.
 
 \n{1}{Duqu}
 1. září 2011 - předpokládá se, že je příbuzný stuxnetu. Název je z prefixu DQ souborů, které vytváří. CrySyS Lab napsal 60 stránkový elaborát.
@@ -427,6 +421,39 @@ Odhad počtu napadených počítaču ze dne 16. ledna 2009 dle společnosti F-Se
 		\it{News and Advice on the World's Latest Innovations | ZDNET}
 		[online]. Copyright © 2022 ZDNET, A Red Ventures company. All rights reserved. [cit. 26.11.2022].
 		Dostupné z: \url{https://www.zdnet.com/article/opening-up-a-can-of-worms-why-wont-conficker-just-die-die-die/}
+	}
+	
+	\bibitem{stuxnet-nordvpn}
+	{
+		Stuxnet explained — the worm that went nuclear | NordVPN. 
+		\it{The best online VPN service for speed and security | NordVPN}
+		[online]. Copyright © 2022 Nord Security. All Rights Reserved [cit. 27.11.2022]. 
+		Dostupné z: \url{https://nordvpn.com/blog/stuxnet-virus/}
+	}
+	\bibitem{stuxnet-avast}
+	{
+		What is Stuxnet, Who Created it \& How Does it Work? | Avast.
+		[online]. [cit. 27.11.2022].
+		Dostupné z: \url{https://www.avast.com/c-stuxnet}
+	}
+	\bibitem{stuxnet-ms}
+	{
+		Microsoft Security Bulletin MS10-046 - Critical | Microsoft Learn. 
+		[online]. Copyright © Microsoft 2022 [cit. 27.11.2022].
+		Dostupné z: \url{https://learn.microsoft.com/en-us/security-updates/securitybulletins/2010/ms10-046}
+	}
+	\bibitem{stuxnet-fsecure}
+	{
+		Trojan-Dropper:W32/Stuxnet Description | F-Secure Labs.
+		[online]. Copyright © F [cit. 27.11.2022].
+		Dostupné z: \url{https://www.f-secure.com/v-descs/trojan-dropper_w32_stuxnet.shtml}
+	}
+	\bibitem{stuxnet-zdnet}
+	{
+		The world's most famous and dangerous APT (state-developed) malware | ZDNET.
+		\it{News and Advice on the World's Latest Innovations | ZDNET}
+		[online]. Copyright © 2022 ZDNET, A Red Ventures company. All rights reserved. [cit. 27.11.2022].
+		Dostupné z: \url{https://www.zdnet.com/pictures/the-worlds-most-famous-and-dangerous-apt-state-developed-malware/3/}
 	}
 }
 
