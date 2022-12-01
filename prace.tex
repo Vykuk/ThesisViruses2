@@ -85,7 +85,8 @@
 	in-sta-lo-vat způ-so-be-né al-go-rit-mem nej-čas-tě-ji ne-za-pla-ti-la
 	ši-fro-va-cí pos-ky-tnu-té-ho při-chá-ze-ly žád-ná va-ri-an-ty web-ka-me-ra
 	zra-ni-tel-nos-ti za-ši-fro-vá-ní sou-bo-ru vy-ge-ne-ro-val za-hr-nu-jí-cí
-	na-pa-de-né-mu sys-té-mu in-fi-ko-va-né-mu pro-střed-nic-tvím u-ži-va-tel-ský-mi}  
+	na-pa-de-né-mu sys-té-mu in-fi-ko-va-né-mu pro-střed-nic-tvím u-ži-va-tel-ský-mi
+	po-čí-ta-če}  
 
 % ============================================================================ %
 \begin{document}
@@ -212,20 +213,30 @@ Ka svému šíření využíval zranitelnost \texttt{CVE-2010-2568}, která spo�
 
 Kromě těchto operačních systému, se červ zaměřoval také na řídící systém Siemens PCS 7, WinCC a STEP7, což je software, který slouží k řízení, sběru a reprezentaci dat z řídících systémů\cite{stuxnet-nordvpn}.
 
-Při spuštění byly na napadeném počítači vytvořeny soubory \texttt{mrxcls.sys} a \texttt{mrxnet.sys}, které se uložily do složky \texttt{C:\textbackslash System32\textbackslash Drivers}. Do složky \texttt{C:\textbackslash Windows\textbackslash inf} byly pak uloženy další důležité \texttt{PNF} soubory, z nichž hlavní komponenta je \texttt{oem7a.PNF}, což je šifrovaný soubor \texttt{DLL}.\cite{stuxnet-fsecure}
+Při spuštění byly na napadeném počítači vytvořeny dva soubory \texttt{mrxcls.sys} a \texttt{mrxnet.sys}, které se uložily do složky \texttt{C:\textbackslash System32\textbackslash Drivers}. Do další složky \texttt{C:\textbackslash Win\-dows\textbackslash inf} byly pak uloženy další důležité \texttt{PNF} soubory, z nichž hlavní komponenta je \texttt{oem7a.PNF}, což je šifrovaný soubor \texttt{DLL}.\cite{stuxnet-fsecure}
 
 Po úspěšném spuštění a detekci, za jsou k počítači připojeny systémy pro řídící jednotky Siemens jsou upravovány signály senzorů, které v řídícím systému mohou bezpečně vypnout řízený proces. Také upravil program v řídících jednotkách, aby ovlivnil fkrekvenční měniče pohonů centrifug. Ty pak točily dlouhou dobu vysokou rychlostí, aby došlo k jejich poškození. Údaje ze senzorů ale byly falšovány a obsluha nemohla zjistit, že něco není v pořádku.\cite{stuxnet-nordvpn}\cite{stuxnet-avast}
 
 \texttt{Stuxnet} se ale dostal i na počítače, které byly připojeny k Internetu a mohl se tak rozšířit i mimo cílová zařízení a mohl infikovat více, než 200\,000 zařízení\cite{stuxnet-zdnet}. Jeho kód tam mohl sloužit jako inspirace pro vznit dalších červů\cite{stuxnet-avast}.
 
-\n{1}{Duqu}
-1. září 2011 - předpokládá se, že je příbuzný stuxnetu. Název je z prefixu DQ souborů, které vytváří. CrySyS Lab napsal 60 stránkový elaborát.
+\n{1}{Koobface}
+Jako poslední jsem si vybral červ \texttt{Koobface}. A to z důvodu, že dokázal cílit nejen na operační systémy Windows, ale také Mac OS a Linux. Poprvě byl objeven v roce 2008 a byl velmi aktivní v roce 2009. Po následném poklesu jeho aktivity se však opět objevil v roce 2013.\cite{koobface-kaspersky}
 
-\url{https://en.wikipedia.org/wiki/Duqu}
+K tomu, aby se šířil, tak využíval technik sociálního inženýrštví a phishingu. Nejčastěji se jednalo o odkaz na sociální síti ke zhlédnutí videa. Po klikntí na odkaz byl uživatel přesměrován na podrvženou stráku připomínající YouTube, nebo Facebook. Uživateli ale byl vnucen update Flash přehrávače\cite{koobface-naked}. Případně byl spuštěn Java applet, který vyzíval uživatele k souhlasu. Applet se pokusil využít zranitelnost neaktualizované verze Java, zjistil verzi a typ operačního systému uživatele a na základě toho instaloval červa do počítače bez nutnosti souhlasu uživatele\cite{koobface-softpedia}.
 
-\url{https://www.radware.com/security/ddos-knowledge-center/ddospedia/duqu/}
+Po spuštění se červ nainstaloval, v případě operačního systému Windows, do složky s operačním systémem pod názvem \uv{freddy35.exe}\cite{koobface-fsecure}. Jsou ale známy i další názvy souborů, pod kterými se dokáže uložit\cite{koobface-kaspersky}. Následně upraví registry systému, aby došlo ke spouštění tohoto souboru při každém startu operačního systému. Provede také změnu v registrech, aby docházelo automaticky ke zobrazení MIME\footnote{MIME je rozšíření původní elektronické pošty, která podporovala přenos pouze ASCII znaků, o další možnosti}\cite{koobface-fsecure}.
 
-\url{https://scadahacker.com/resources/duqu.html}
+U operačního systému Linux byly jeho možnosti značně omezené. Veškeré soubory si uložil v domovské složce uživatele do složky s názvem \texttt{.janna} a program byl schopen běžet pouze do restartu systému. Tím je infekce operačního systému Linux na rozdíl od operačního systému Windows pouze dočasná.\cite{koobface-linux}\cite{koobface-softpedia}
+
+
+
+
+
+hlavním cílem sociální média\cite{koobface-kaspersky}
+
+ve spojených státech v roce 2016 (poslední vykazované období) podle FBI byla sociální média užita ke spáchání 17712 kyberzločinů a způsobily škodu 66.4mil usd\cite{koobface-kaspersky}
+
+
 
 \n{2}{Cíl útoku}
 \n{2}{Předpokládaný počet napadených zařízení}
@@ -455,6 +466,48 @@ Po úspěšném spuštění a detekci, za jsou k počítači připojeny systémy
 		[online]. Copyright © 2022 ZDNET, A Red Ventures company. All rights reserved. [cit. 27.11.2022].
 		Dostupné z: \url{https://www.zdnet.com/pictures/the-worlds-most-famous-and-dangerous-apt-state-developed-malware/3/}
 	}
+	
+	\bibitem{koobface-kaspersky}
+	{
+		What Is the Koobface Virus?
+		\it{Kaspersky Cyber Security Solutions for Home and Business | Kaspersky}
+		[online]. Copyright © [cit. 01.12.2022].
+		Dostupné z: \url{https://www.kaspersky.com/resource-center/definitions/what-is-the-koobface-virus}
+	}
+	\bibitem{koobface-naked}
+	{
+		Q\&A about the Koobface virus – Naked Security.
+		\it{Naked Security – Computer Security News, Advice and Research}
+		[online]. Copyright © 1997 [cit. 01.12.2022].
+		Dostupné z: \url{https://nakedsecurity.sophos.com/questions-and-answers-about-koobface/}
+	}
+	\bibitem{koobface-fsecure}
+	{
+		Net-Worm:W32/Koobface.ES Description | F-Secure Labs.
+		[online]. Copyright © F [cit. 01.12.2022].
+		Dostupné z: \url{https://www.f-secure.com/v-descs/net-worm_w32_koobface_es.shtml}
+	}
+	\bibitem{koobface-linux}
+	{
+		Cross-Platform Koobface Worm Can Infect Linux.
+		\it{Tux Tweaks - Linux Tweaks, HowTo's and Reviews}
+		[online]. [cit. 01.12.2022].
+		Dostupné z: \url{https://tuxtweaks.com/2010/10/cross-platform-koobface-worm-can-infect-linux/}
+	}
+	\bibitem{koobface-softpedia}
+	{
+		New Koobface Variant Infects Linux Systems
+		\it{www.softpedia.com} © 2001-2022 Softpedia
+		[online]. [cit. 01.12.2022
+		Dostupné z: \url{https://news.softpedia.com/news/New-Koobface-Variant-Infects-Linux-too-163450.shtml}
+	}
+	\bibitem{koobface-mac}
+	{
+		Koobface Worm Targets Java on Mac OS X – Krebs on Security.
+		\it{Krebs on Security – In-depth security news and investigation}
+		[online]. Copyright © Krebs on Security [cit. 01.12.2022].
+		Dostupné z: \url{https://krebsonsecurity.com/2010/10/koobface-worm-targets-java-on-mac-os-x/}
+	}
 }
 
 % Pro generování literatury lze alternativně použít i příkaz "\seznamlitbib", 
@@ -470,11 +523,11 @@ Po úspěšném spuštění a detekci, za jsou k počítači připojeny systémy
 
 
 % ============================================================================ %
-\seznamobr  % Seznam je generován automaticky
+%\seznamobr  % Seznam je generován automaticky
 
 
 % ============================================================================ %
-\seznamtab  % Seznam je generován automaticky
+%\seznamtab  % Seznam je generován automaticky
 
 
 % ============================================================================ %
