@@ -61,7 +61,7 @@
 \nastavnazeven{Název práce anglicky (max. 2 řádky)} % Jen u anglicky psané práce
 \nastavabstraktcz{Semestrální práce se zabývá vývojem počítačových od roku 2005 do současnosti a dále se věnuje několika vybraným červům, které se v tomto období vyskytli.}
 \nastavabstrakten{The semester's thesis deals with the development of Computer Worms from 2005 to the present day and also focuses on several selected Worms that occurred during this period.}
-\nastavklicovaslovacz{Malware, Worm}
+\nastavklicovaslovacz{Malware, Worm, červ}
 \nastavklicovaslovaen{Malware, Worm}
 
 % Následující příkaz nastaví standard PDF/A-1b
@@ -86,7 +86,7 @@
 	ši-fro-va-cí pos-ky-tnu-té-ho při-chá-ze-ly žád-ná va-ri-an-ty web-ka-me-ra
 	zra-ni-tel-nos-ti za-ši-fro-vá-ní sou-bo-ru vy-ge-ne-ro-val za-hr-nu-jí-cí
 	na-pa-de-né-mu sys-té-mu in-fi-ko-va-né-mu pro-střed-nic-tvím u-ži-va-tel-ský-mi
-	po-čí-ta-če}  
+	po-čí-ta-če e-mai-lo-vý-mi do-mov-ské}  
 
 % ============================================================================ %
 \begin{document}
@@ -132,7 +132,7 @@ V této práci se zabývám vývojem počítačovým červů v období od roku 2
 \n{1}{Zotob}
 První mnou vybraný červ jménem \texttt{Zotob} se objevil 14. srpna 2005\cite{wiki-timeline}\cite{zotob-schneider}. Cílem tohoto červa byly počítače s operačním systémem Windows 2000\cite{zotob-fsecure}.
 
-Po spuštění červa v napadeném počítači uložil svou kopii s názvem \texttt{botzor.exe} do systémové složky\cite{zotob-fsecure}. Dále vytvořil záznam v registrech systému, aby umožnil spuštění programu po startu operačního systému. Dále vytvořil mutex s názvem \texttt{B-O-T-Z-O-R}, aby zabráníl spuštění spuštění více, než jedné instance programu. V dalších verzích tohoto červa byl postup stejný, jen se soubory jmenovaly \texttt{csm.exe} ve verzi \texttt{Zotob.B} a \texttt{per.exe} ve verzi \texttt{Zotob.C}.
+Po spuštění červa v napadeném počítači uložil svou kopii s názvem \texttt{botzor.exe} do systémové složky\cite{zotob-fsecure}. Dále vytvořil záznam v registrech systému, aby umožnil spuštění programu po startu operačního systému. Dále vytvořil mutex s názvem \texttt{B-O-T-Z-O-R}, aby zabráníl spuštění spuštění více, než jedné instance programu. V dalších verzích tohoto červa byl postup stejný, jen se soubory jmenovaly \texttt{csm.exe} ve verzi \texttt{Zotob.B} a~\texttt{per.exe} ve verzi \texttt{Zotob.C}.
 
 Název použitého mutexu odpovídá názvu, kterým červa pojmenoval jeho autor. Tedy \texttt{Batzor2005}. Název \texttt{Zotob} pochází od antivirových společností, které hrozbu detekovaly\cite{zotob-wikidot}. Současně se skutečný název červa ve verzi \texttt{Zotob.A} a \texttt{Zotob.B} zapsán do souboru \texttt{hosts}. Konkrétně je tam tedy vepsána zpráva \uv{Botzor2005 Made By .... Greetz to good friend Coder. Based On HellBot3} a \uv{MSG to avs: the first av who detect this worm will be the first killed in the next 24hours!!!}\cite{zotob-fsecure}. Soubor \texttt{hosts} je také upraven, aby přesměroval přístup k některým serverům\footnote{Kompletní seznam je k vidění na stránce \url{https://www.f-secure.com/v-descs/zotob_a.shtml}} na adresu \texttt{127.0.0.1}, tedy \texttt{localhost}\cite{zotob-fsecure}. Také došlo ke spuštění FTP serveru na portu 33333, odkud si mohly další napadené systémy stáhnout tohoto červa\cite{zotob-fsecure}.
 
@@ -144,7 +144,7 @@ Pokud bylo úspěšně navázáno spojení s cílovým systémem protokolem TCP 
 
 Každý napadený počítač dokázal přijímat příkazy pomocí IRC a předdefinovaných adresách. Útočník tak mohl dát příkazy například k vyžádání informací o systému, stažení spustitelného souboru, manipulaci s bezpečnostním nastavením systému, nebo odstranení červa ze systému.
 
-Verze \texttt{Zotob.C} pak dokázala využít zranitelnosti v Abstract Syntax Notation 1 popsané jako \texttt{MS04-007}, která učinila zranitelným i systém Windows XP do SP1\cite{zotob-msbulletin2}. Také tato verze využívala ke svému šíření metody phishingu pomocí emailových zpráv.\cite{zotobc-fsecure}
+Verze \texttt{Zotob.C} pak dokázala využít zranitelnosti v Abstract Syntax Notation 1 popsané jako \texttt{MS04-007}, která učinila zranitelným i systém Windows XP do SP1\cite{zotob-msbulletin2}. Také tato verze využívala ke svému šíření metody phishingu pomocí spamování emailovými zprávami.\cite{zotobc-fsecure}
 
 25. srpna 2005 byli zatčeni tři lidé zodpovědní za vznik tohoto červa. Jeho autorem byl osumnáctiletý Maročan, narozený v Rusku, Farid Essebar, který vystupoval pod přezdívkou \uv{Diab10} a jeho dvacetiletý přítel Achraf Bahloul. V Turecku byl zatčen také 21 letý Artilla Ekici s přezdívkou \uv{Coder}, který Essebarovi za vytvoření červa zaplatil.\cite{zotob-schneider}\cite{zotob-fbi}
 
@@ -186,7 +186,7 @@ Přes to však dle zprávy společnosti F-Secure může být započítáno více
 \n{1}{Conficker}
 V listopadu 2008 byl poprvé detekován červ, který byl pojmenován \texttt{Conficker}, nebo také \texttt{Downup}, \texttt{Downadup}, nebo \texttt{Kido}. Tento červ cílil na zranitelnost \texttt{MS08-067}, kterou trpěly počítače s operačním systémem Windows.\cite{conficker-wiki}
 
-Zranitelnost umožňovala vzdálené spuštění kódu na počítačích s operačním systémem Windows 2000 (SP4), Windows XP (SP2 a SP3), Windows Server 2003 (SP1 a SP2), Windows Vista, Windows Server 2008 a Windows 7 pomocí protokolu RPC\footnote{Remote Procedure Call -- klient-server služba, kdy klient může vyžádat službu od programu umístěného na jiném počítači}. Zneužitím této chyby je možné na vzdáleném počítači manipulovat s daty, instalovat aplikace, nebo vytvořit uživatelský účet s právy administrátora.\cite{conficker-ms}\cite{conficker-malwarebytes}
+Zranitelnost umožňovala vzdálené spuštění kódu na počítačích s operačním systémem Windows 2000 (SP4), Windows XP (SP2 a SP3), Windows Server 2003 (SP1 a~SP2), Windows Vista, Windows Server 2008 a Windows 7 pomocí protokolu RPC\footnote{Remote Procedure Call -- klient-server služba, kdy klient může vyžádat službu od programu umístěného na jiném počítači}. Zneužitím této chyby je možné na vzdáleném počítači manipulovat s daty, instalovat aplikace, nebo vytvořit uživatelský účet s právy administrátora.\cite{conficker-ms}\cite{conficker-malwarebytes}
 
 Na operačních systémech Windows 2000, Windows XP a Windows Server 2003 je možné této zranitelnosti využít anonymním uživatelem, tedy kýmkoliv, kdo má přístup k dané síti. Na ostatních operačních systémech vyjmenovaných výše je však nutné ověření uživatele. Operační systému Windows 7 byl zranitelný jen ve verzi \uv{Pre-Beta}.\cite{conficker-ms}
 
@@ -196,7 +196,7 @@ K šíření pomocí vyjímatelných médií využíval výchozího nastavení o
 
 Při spuštění na čistém počítači uložil své tělo jako knihovnu \texttt{DLL} s náhodným názvem do složky \texttt{\%SYSTEM\%}\footnote{Obvykle se jedná o složku C:\textbackslash Windows\textbackslash System32\textbackslash}, případně do složky programu \texttt{Internet Explorer}, nebo \texttt{Movie Maker}.\cite{conficker-trendmicro}
 
-Následně pak upravil registry systému, aby si zajistil spuštění po startu prostřednictvím legitimního souboru \texttt{rundll32.exe}, nebo \texttt{svchost32.exe}. Aby zamezil svému nalezení, upravil také registry, aby se v průzkumníku souborů nezobrazovaly skryté a systémové soubory.\cite{conficker-trendmicro}
+Následně pak upravil registry systému, aby si zajistil spuštění po startu prostřednictvím legitimního souboru \texttt{rundll32.exe}, nebo \texttt{svchost32.exe}. Aby zamezil svému nalezení, upravil také registry, aby se v průzkumníku souborů nezobrazovaly skryté a~systémové soubory.\cite{conficker-trendmicro}
 
 V počítači zakázal běh některých služeb, zejména Windows Automatic Update Service, nebo Windows Defender Service a pokud zjistil, že běží na operačním systému Windows Vista, pak zakázal automatické ladění protokolu TCP/IP. Napadne API operačního systému, poskytující komunikaci s DNS, aby zabránil přístupu k určitým doménám, které jsou zaměřeny na počítačovou bezpečnost.\cite{conficker-fsecure}
 
@@ -224,26 +224,17 @@ Jako poslední jsem si vybral červ \texttt{Koobface}. A to z důvodu, že doká
 
 K tomu, aby se šířil, tak využíval technik sociálního inženýrštví a phishingu. Nejčastěji se jednalo o odkaz na sociální síti ke zhlédnutí videa. Po klikntí na odkaz byl uživatel přesměrován na podrvženou stráku připomínající YouTube, nebo Facebook. Uživateli ale byl vnucen update Flash přehrávače\cite{koobface-naked}. Případně byl spuštěn Java applet, který vyzíval uživatele k souhlasu. Applet se pokusil využít zranitelnost neaktualizované verze Java, zjistil verzi a typ operačního systému uživatele a na základě toho instaloval červa do počítače bez nutnosti souhlasu uživatele\cite{koobface-softpedia}.
 
-Po spuštění se červ nainstaloval, v případě operačního systému Windows, do složky s operačním systémem pod názvem \uv{freddy35.exe}\cite{koobface-fsecure}. Jsou ale známy i další názvy souborů, pod kterými se dokáže uložit\cite{koobface-kaspersky}. Následně upraví registry systému, aby došlo ke spouštění tohoto souboru při každém startu operačního systému. Provede také změnu v registrech, aby docházelo automaticky ke zobrazení MIME\footnote{MIME je rozšíření původní elektronické pošty, která podporovala přenos pouze ASCII znaků, o další možnosti}\cite{koobface-fsecure}.
+Po spuštění se červ nainstaloval, v případě operačního systému Windows, do složky s operačním systémem pod názvem \uv{freddy35.exe}\cite{koobface-fsecure}. Jsou ale známy i další názvy souborů, pod kterými se dokáže uložit\cite{koobface-kaspersky}. Následně upraví registry systému, aby došlo ke spouštění tohoto souboru při každém startu operačního systému. Provede také změnu v registrech, aby docházelo automaticky ke zobrazení MIME\footnote{MIME je rozšíření původní elektronické pošty, která podporovala přenos pouze ASCII znaků, o~další možnosti}\cite{koobface-fsecure}.
 
-U operačního systému Linux byly jeho možnosti značně omezené. Veškeré soubory si uložil v domovské složce uživatele do složky s názvem \texttt{.janna} a program byl schopen běžet pouze do restartu systému. Tím je infekce operačního systému Linux na rozdíl od operačního systému Windows pouze dočasná.\cite{koobface-linux}\cite{koobface-softpedia}
+Při napadení a instalaci červa do operačního systému Mac OS se červ usídlil v~domovské složce uživatele ve skryté složce \texttt{.jnana}.
 
+U operačního systému Linux byly jeho možnosti značně omezené. Veškeré soubory si, jak v případě Mac OS, uložil v domovské složce uživatele do složky s názvem \texttt{.jnana}, ale program byl schopen běžet pouze do restartu systému. Tím je infekce operačního systému Linux na rozdíl od operačního systému Windows a Mac OS pouze dočasná.\cite{koobface-linux}\cite{koobface-softpedia}
 
+Zdá se tedy, že platformy, na které červ přímo cílil, jsou Windows a Mac OS. To, že červ dokázal napadnout i operační systém Linux se zdá být spíše vedlejším efekte, než záměrem. Už proto, že infekce počítače s operačním systémem Linux je jen dočasná, tedy pouze není dořešeno automatické spuštění při startu systému.\cite{koobface-softpedia2}
 
+Po úspěšné instalaci červa do systému se tento systém zařadil do sítě botnetů. Byl schopen přijímat příkazy z C\&C serveru a stahovat a instalovat do systému další škodlivý software. Červ se také snaží z napadeného počítače vytěžit přihlažovací údaje do sociálních sítí a vyhledávat kontakty, kam se dále pokusí pomocí sociálních sítí šířit.\cite{koobface-fsecure}
 
-
-hlavním cílem sociální média\cite{koobface-kaspersky}
-
-ve spojených státech v roce 2016 (poslední vykazované období) podle FBI byla sociální média užita ke spáchání 17712 kyberzločinů a způsobily škodu 66.4mil usd\cite{koobface-kaspersky}
-
-
-
-\n{2}{Cíl útoku}
-\n{2}{Předpokládaný počet napadených zařízení}
-\n{2}{Identifikační znaky}
-\n{2}{Způsob šíření}
-
-
+Předpokládá se, že červ mohl infikovat až 800\,000 zařízení.\cite{koobface-bbc}
 
 % ============================================================================ %
 % Pokud Vaše práce neobsahuje analytickou část, stačí odstranit či zakomentovat nasledujících pár rádků
@@ -256,9 +247,7 @@ ve spojených státech v roce 2016 (poslední vykazované období) podle FBI byl
 %\n{2}{Podnadpis}
 % ============================================================================ %
 \nn{Závěr}
-\textcolor{red}{Na základě uvedených příkladů je zřejmé, že ransomware prošel od svého počátku velkým rozvojem. Z velké části se šíří pomocí emailových zpráv, kdy je přiložen samotný ransomware, nebo program, případně skript, který jej stáhne a naintaluje do uživatelova počítače. Úživatelé tak mohli zabránit infekci svého počítače pouze větší obezřejností. Na rozdíl od útoků, které zneužily tzv. zero-day zranitelnosti.}
-
-\textcolor{red}{Dále po útoku ransomwaru \texttt{Reveton}, o kterém jsem psal v kapitole č.~\ref{reveton}, je znatelná změna ve vývoji ransomwaru, který používali sami vývojáři do modelu, kdy je ransomware poskytován za úplatu jako služba -- RaaS.}
+Z příkladů uvedených v této práci vyplívá, že některé počítačové červy mohou spoléhat na metody sociálního inženýrství a uživatele napadeného počítače nějakou manipulací přimět k instalaci škodlivého software, ale ty sofistikovanější dokáží napadat počítače zcela sami tím, že zneužijí tzv. \uv{zero-day} zranitelnosti systému, případně spoléhají na to, že se rozšíří na systémy, kde nejsou instalovány bezpečnostní záplaty. Využívány jsou i techniky, při kterých jsou využívána slabá hesla uživatelů, nebo administrátorů na napadaných systémech a ta jsou prolomena pomocí slovníkového útoku.
 
 
 % ============================================================================ %
@@ -498,7 +487,7 @@ ve spojených státech v roce 2016 (poslední vykazované období) podle FBI byl
 	{
 		New Koobface Variant Infects Linux Systems
 		\it{www.softpedia.com} © 2001-2022 Softpedia
-		[online]. [cit. 01.12.2022
+		[online]. [cit. 01.12.2022].
 		Dostupné z: \url{https://news.softpedia.com/news/New-Koobface-Variant-Infects-Linux-too-163450.shtml}
 	}
 	\bibitem{koobface-mac}
@@ -507,6 +496,20 @@ ve spojených státech v roce 2016 (poslední vykazované období) podle FBI byl
 		\it{Krebs on Security – In-depth security news and investigation}
 		[online]. Copyright © Krebs on Security [cit. 01.12.2022].
 		Dostupné z: \url{https://krebsonsecurity.com/2010/10/koobface-worm-targets-java-on-mac-os-x/}
+	}
+	\bibitem{koobface-softpedia2}
+	{
+		Linux Java-Based Trojan Might Have Been an Accident
+		\it{www.softpedia.com} © 2001-2022 Softpedia
+		[online]. [cit. 03.12.2022].
+		Dostupné z: \url{https://news.softpedia.com/news/Linux-Java-Based-Trojan-Might-Have-Been-an-Accident-163848.shtml}
+	}
+	\bibitem{koobface-bbc}
+	{
+		Facebook Koobface worm 'hacker gang named' - BBC News.
+		\it{BBC - Homepage}
+		[online]. Copyright © 2022 BBC. The BBC is not responsible for the content of external sites. [cit. 03.12.2022].
+		Dostupné z: \url{https://www.bbc.com/news/technology-16595856}
 	}
 }
 
